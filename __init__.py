@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template,\
     request, redirect, jsonify, url_for, flash
 from sqlalchemy import create_engine, asc
@@ -17,12 +18,12 @@ from functools import wraps
 app = Flask(__name__)
 
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/items/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
 
 
-# Connect to Database and create database session
-engine = create_engine('sqlite:///restaurantmenuwithusers.db')
+engine = create_engine('sqlite:////var/www/items/restaurantmenuwithusers.db')
+
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -410,4 +411,4 @@ def disconnect():
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
-    app.run(host='0.0.0.0', port=5000)
+    app.run()

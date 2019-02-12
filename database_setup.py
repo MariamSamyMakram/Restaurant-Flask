@@ -58,7 +58,7 @@ class MenuItem(Base):
         }
 
 
-engine = create_engine('sqlite:///restaurantmenuwithusers.db')
+engine = create_engine('sqlite:////var/www/items/restaurantmenuwithusers.db')
 
 
 Base.metadata.create_all(engine)
